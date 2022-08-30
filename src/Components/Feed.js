@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Post from '../Components/Post'
 import db from '../Firebase/Firebase'
+import '../CSS/Feed.css'
 
 function Feed() {
 
@@ -27,6 +28,10 @@ function Feed() {
     
   return (
     <div className='feed'>
+        {posts.length == 0 && 
+            <div className='noPosts'> Be the first to Post!</div>
+        }
+
         {posts.map(post => (
             <Post key={post} name={post.name} content={post.content} timestamp={post.timestamp}></Post>
         ))}
