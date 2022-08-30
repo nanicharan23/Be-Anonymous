@@ -7,7 +7,7 @@
     color:#F8F9FA;
     font-family: 'Alfa Slab One', cursive;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .logo{
@@ -15,8 +15,8 @@
 }
 
 .mainLogo{
-    width: 50px;
-    height:auto;
+    width: auto;
+    height:40px;
 }
 
 .mainLogoWithBadge{
