@@ -9,8 +9,10 @@ function Form() {
 
     // This is used to get the current timestamp.
     const moment = require('moment');
-    var formatedDate = moment().format(
-    "MMMM Do YYYY, dddd, h:mm a");
+    var formatedDate = moment().format("MMMM Do YYYY, dddd, h:mm:ss a");
+
+    // This is used to get the current second
+    var currentSecond = new Date().getTime() / 1000;
 
     const [input, setInput] = useState("") // Sets the input when ever input field is changed.
     
@@ -45,6 +47,7 @@ function Form() {
         e.preventDefault()
 
         db.collection('posts').add({
+            secondPosted : currentSecond,
             name : generateName(),
             content: filter.clean(input),
             timestamp : formatedDate
