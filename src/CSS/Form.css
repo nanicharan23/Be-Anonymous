@@ -1,0 +1,47 @@
+.form{
+    padding: 20px;
+    display: flex;
+    border-bottom: 1px solid #6C757D;
+    color: #F8F9FA;
+    width: 100%;
+}
+
+.inputBox{
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #F8F9FA;
+    width: 100%;
+    margin-bottom: 20px;
+    font-weight: 200;
+}
+
+input:focus{
+    outline:none;
+}
+
+.formLeft{
+    margin-right: 20px;
+}
+
+.postButton{
+    border: none;
+    border-radius: 30px;
+    width: auto;
+    font-size: 25px;
+    padding-left:30px;
+    padding-right:30px ;
+    background: #212529;
+    color: #F8F9FA;
+    align-items: center;
+    display: flex;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+}
+
+.rocket{
+    height:30px;
+    width: auto;
+    margin-left: 10px;
+    color: white;
+}
