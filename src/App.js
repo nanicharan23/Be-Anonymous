@@ -2,6 +2,7 @@ import './App.css';
 import Nav from './Components/Nav'
 import Feed from './Components/Feed'
 import Form from './Components/Form';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Form/>
         <Feed/>
       </div>
+      <Footer/>
     </div>
   );
 }
