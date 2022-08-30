@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Post from '../Components/Post'
 import db from '../Firebase/Firebase'
 
-
 function Feed() {
 
     const [posts, setPosts] = useState([]) // This is used to set posts.
 
     // This will get invoked when ever Feed component runs and fetches the posts from database.
     useEffect(()=>{
-        db.collection('posts').onSnapshot(snapshot =>{
+        db.collection('posts').onSnapshot(snapshot => {
             var listOfPosts = snapshot.docs.map(doc => doc.data())
             sortPostsLatestToOldest(listOfPosts)
             setPosts(listOfPosts)
