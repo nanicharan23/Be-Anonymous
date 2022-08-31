@@ -9,7 +9,7 @@ function Form() {
 
     // This is used to get the current timestamp.
     const moment = require('moment');
-    var formatedDate = moment().format("MMMM Do YYYY, dddd, h:mm:ss a");
+    var formatedDate = moment().format("MMM Do YYYY • ddd • h:mm a");
 
     // This is used to get the current second
     var currentSecond = new Date().getTime() / 1000;
