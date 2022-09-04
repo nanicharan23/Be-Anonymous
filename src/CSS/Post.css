@@ -1,7 +1,7 @@
 .post{
     display: flex;
     color: #F8F9FA;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
     border-bottom: 1px solid #6C757D;
 }
@@ -12,7 +12,7 @@
 }
 
 .postLeft{
-    margin-right: 20px;
+    margin-right: 10px;
 }
 .postRight_1{
     display: flex;
