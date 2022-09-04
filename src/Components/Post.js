@@ -1,6 +1,7 @@
 import React from 'react'
 import VerifiedIcon from '@mui/icons-material/Verified';
 import '../CSS/Post.css'
+import Linkify from 'react-linkify';
 
 function Post(props) {
 
@@ -16,7 +17,9 @@ function Post(props) {
                 <div className='username'>{props.name}</div>
                 <VerifiedIcon></VerifiedIcon>
             </div>
-            <div>{props.content}</div>
+            <Linkify>
+              <div>{props.content}</div>
+            </Linkify>
             {props.fileUrl!=null && <img className="postImage" src={props.fileUrl}></img>}
             <div className='timestamp'>{props.timestamp}</div>
         </div>
