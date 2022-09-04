@@ -30,3 +30,16 @@
     color: #ADB5BD;
     font-size: smaller;
 }
+
+.postImage{
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px; 
+}
+
+@media only screen and (min-width : 768px){
+    .postImage{
+        width: 500px;
+    }
+}

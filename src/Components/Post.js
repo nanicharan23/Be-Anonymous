@@ -17,6 +17,7 @@ function Post(props) {
                 <VerifiedIcon></VerifiedIcon>
             </div>
             <div>{props.content}</div>
+            {props.fileUrl!=null && <img className="postImage" src={props.fileUrl}></img>}
             <div className='timestamp'>{props.timestamp}</div>
         </div>
     </div>

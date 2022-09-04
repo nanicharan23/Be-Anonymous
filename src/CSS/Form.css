@@ -12,8 +12,16 @@
     font-size: 30px;
     color: #F8F9FA;
     width: 100%;
-    margin-bottom: 20px;
     font-weight: 200;
+}
+
+.invalidInputAlert{
+    display: none;
+    margin-bottom: 10px;
+    font-weight: 100;
+    font-size:13px;
+    margin-left: 3px;
+    color: #ADB5BD;
 }
 
 input:focus{
@@ -37,6 +45,7 @@ input:focus{
     display: flex;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 100;
+    
 }
 
 .rocket{
@@ -44,4 +53,72 @@ input:focus{
     width: auto;
     margin-left: 10px;
     color: white;
+}
+
+.imageInput{
+    display: none;
+}
+
+.uploadLabel{
+    display: flex;
+    align-items: center;
+    background-color: #212529;
+    width: 50px;
+    justify-content: center;
+    height: auto;
+    border-radius: 60px;
+    cursor:pointer;
+}
+
+.uploadImageIcon{
+    height: 20px;
+    width: auto;
+    margin: 10px;
+    color: #ADB5BD;
+}
+
+.hashtagIcon{
+    height: 20px;
+    width: auto;
+    margin: 10px;
+    color: #ADB5BD;
+}
+
+.post-add-ons{
+    align-items: center;
+    display: flex;
+}
+
+.hastagLabel{
+    display: flex;
+    align-items: center;
+    background-color: #212529;
+    width: 45px;
+    justify-content: center;
+    height: auto;
+    border-radius: 50px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.uploadedDot{
+    display: none;
+    height: 15px;
+    width: 15px;
+    background-color: #ADB5BD;
+    float: right;
+    position: absolute;
+    margin-bottom: 35px;
+    margin-left: 30px;
+    border-radius: 50px;
+    align-items: center;
+    font-size: 11px;
+    text-align: center;
+    color: #212529;
+    font-weight: bolder;
+}
+
+#imageUploadProgressBar{
+    display: none;
+    border-radius: 30px ;
 }
