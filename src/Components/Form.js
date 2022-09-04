@@ -16,6 +16,7 @@ import TagIcon from '@mui/icons-material/Tag';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import LinearProgress from '@mui/material/LinearProgress';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 function Form() {
     // This is used to filter the bad words in content.
@@ -200,6 +201,19 @@ function Form() {
         $(".inputBox").focus()
     }
 
+    /**
+     * This method clears the entire input(text) to empty string.
+     * @name clickedClear
+     * @param {} none
+     * @returns {} none
+     */
+    const clickedClear = () => {
+        if(input.length == 0)
+            return  
+
+        setInput("")
+        $(".inputBox").focus()
+    }
 
     return (
         <div>
@@ -209,15 +223,17 @@ function Form() {
                     className='profileIcon'/>
                 </div>
                 <div className='formRight'>
-                    <input 
-                    id="inputBox"
-                    type="text" 
-                    className="inputBox"
-                    placeholder="What's going on..."
-                    value={input}
-                    onChange={e=>setInput(e.target.value)}
-                    ></input>
-
+                    <div className='inputBoxWithClear'>
+                        <input 
+                        id="inputBox"
+                        type="text" 
+                        className="inputBox"
+                        placeholder="What's going on..."
+                        value={input}
+                        onChange={e=>setInput(e.target.value)}
+                        ></input>
+                        {input.length != 0 && <CancelIcon className="clearIcon" onClick={clickedClear}/>}
+                    </div>
                     <div id="invalidInput" className='invalidInputAlert'>
                         <div>Drop Valid Msg or Upload a Pic..</div>
                         <WarningRoundedIcon className="warningIcon"/>
