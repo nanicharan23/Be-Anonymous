@@ -1,0 +1,30 @@
+.replyBox{
+    display: flex;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.replyBoxRight_1{
+    display: flex;
+    align-items: center;
+}
+
+.replyBox > .replyBoxLeft > .profileIcon{
+    width: 30px;
+    height: auto;
+}
+
+.replyBoxLeft{
+    margin-right: 10px;
+}
+
+.repliedUsername{
+    margin-right: 10px;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.replyBox > .replyBoxRight > .replyBoxRight_1 > .verifiedIcon{
+    height: 20px;
+    width: auto;
+}

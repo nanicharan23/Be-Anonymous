@@ -38,8 +38,41 @@
     border-radius: 10px; 
 }
 
+
+.replyText{
+    color: #ADB5BD;
+    font-size:medium;    
+    font-weight: 200;
+}
+
+.replyButton{
+    display: flex;
+    cursor: pointer;
+}
+
+.replyIcon{
+    margin-left: 5px;
+}
+
+.postFooter{
+    margin-top: 10px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+
 @media only screen and (min-width : 768px){
     .postImage{
         width: 500px;
+    }
+    .postRight{
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width : 768px){
+    .postRight{
+        width: 100%;
     }
 }

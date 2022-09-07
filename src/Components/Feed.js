@@ -34,7 +34,15 @@ function Feed() {
         }
 
         {posts.map((post, index) => (
-            <Post key={index} name={post.name} content={post.content} timestamp={post.timestamp} fileUrl={post.fileUrl}></Post>
+            <Post 
+            key={index} 
+            name={post.name} 
+            content={post.content} 
+            timestamp={post.timestamp} 
+            fileUrl={post.fileUrl}
+            postId={post.postId}
+            replies={post.replies}
+            ></Post>
         ))}
     </div>
   )

@@ -1,0 +1,24 @@
+.replyInputBoxOuter{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.replyInputBox{
+    float: left;
+    display: flex;
+    background: none;
+    border:none;
+    color: #F8F9FA;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #6C757D;
+    justify-items:center;
+}
+
+.replyInputBoxOuter > div > .sendIcon{
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+}

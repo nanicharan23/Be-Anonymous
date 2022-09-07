@@ -72,9 +72,10 @@ function Form() {
                 name : generateName(),
                 content: input.length == 0 ? "" : filter.clean(input),
                 timestamp : formatedDate,
-                fileUrl : imageUrl
-            })
-
+                fileUrl : imageUrl,
+                replies : []
+            }).then((docRef) => db.collection('posts').doc(docRef.id).update({postId : docRef.id}))
+            
             resetThingsAfterPosting()
         }
         catch(e){
