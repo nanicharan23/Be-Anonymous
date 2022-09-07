@@ -35,21 +35,26 @@ function Reply(props) {
         if(reply.length == 0)
             return
         
-        const docRef = db.collection('posts').doc(props.postId)
-        const doc = await docRef.get()
-        const replies = doc.data().replies
+        try{
+            const docRef = db.collection('posts').doc(props.postId)
+            const doc = await docRef.get()
+            const replies = doc.data().replies
 
-        const currentSecond = new Date().getTime() / 1000
+            const currentSecond = new Date().getTime() / 1000
 
-        replies.push({
-            repliedUsername : generateName(), 
-            reply : reply,
-            secondReplied : currentSecond
-        })
+            replies.push({
+                repliedUsername : generateName(), 
+                reply : reply,
+                secondReplied : currentSecond
+            })
 
-        docRef.update({replies : replies})
+            docRef.update({replies : replies})
 
-        setReply("")
+            setReply("")
+        }
+        catch(e){
+            console.log(e)
+        }
     }
 
     return (

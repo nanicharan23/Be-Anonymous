@@ -41,7 +41,7 @@ function Post(props) {
 
             <div className='postFooter'>
               <div className='replyButton' onClick={() => replyDisplay=="none" ? setReplyDisplay("block") : setReplyDisplay("none")}>
-                    <div className='repliesCount'>{props.replies.length}</div>
+                    {props.replies && <div className='repliesCount'>{props.replies.length}</div>}
                     <div className='replyText'>Reply</div>
                     <ReplyIcon className='replyIcon'/>
               </div>

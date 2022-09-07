@@ -6,14 +6,14 @@ import '../CSS/Replies.css'
 function Replies(props) {
   return (
     <div className='replies'>
-        {props.replies.slice(0).reverse().map((reply,index)=>
+        {props.replies && props.replies.slice(0).reverse().map((reply,index)=>
         <div key={uuidv4()+reply.reply}>
             <ReplyBox 
             repliedUsername={reply.repliedUsername}
             reply={reply.reply}
             repliedSecond={reply.secondReplied}
             />
-        </div>
+        </div> 
         )}
     </div>
   )
