@@ -6,8 +6,21 @@ import Linkify from 'react-linkify';
 import Reply from './Reply';
 import Replies from './Replies';
 
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+
 function Post(props) {
   const [replyDisplay, setReplyDisplay] = useState("none") // Sets display of reply section
+
+  const getTimeAgo = (secondPosted) => {
+      TimeAgo.addLocale(en)
+      const timeAgo = new TimeAgo('en-US')
+
+      const currentSecond = new Date().getTime() / 1000
+      const diff = currentSecond - secondPosted
+
+      return timeAgo.format(Date.now() - diff*1000)
+  }
 
   return (
     <div className='post'>
@@ -32,7 +45,7 @@ function Post(props) {
                     <div className='replyText'>Reply</div>
                     <ReplyIcon className='replyIcon'/>
               </div>
-              <div className='timestamp'>{props.timestamp}</div>
+              <div className='timestamp'>{getTimeAgo(props.secondPosted)}</div>
             </div>
 
             <div id="replySection" style={{"display":replyDisplay}}>

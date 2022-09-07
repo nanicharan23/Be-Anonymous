@@ -11,6 +11,7 @@ function Replies(props) {
             <ReplyBox 
             repliedUsername={reply.repliedUsername}
             reply={reply.reply}
+            repliedSecond={reply.secondReplied}
             />
         </div>
         )}

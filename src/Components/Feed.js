@@ -42,6 +42,7 @@ function Feed() {
             fileUrl={post.fileUrl}
             postId={post.postId}
             replies={post.replies}
+            secondPosted={post.secondPosted}
             ></Post>
         ))}
     </div>

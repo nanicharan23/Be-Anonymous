@@ -39,9 +39,12 @@ function Reply(props) {
         const doc = await docRef.get()
         const replies = doc.data().replies
 
+        const currentSecond = new Date().getTime() / 1000
+
         replies.push({
             repliedUsername : generateName(), 
-            reply : reply
+            reply : reply,
+            secondReplied : currentSecond
         })
 
         docRef.update({replies : replies})

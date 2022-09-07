@@ -13,6 +13,7 @@
     "bad-words": "^3.0.4",
     "browser-image-compression": "^2.0.0",
     "firebase": "^9.9.3",
+    "javascript-time-ago": "^2.5.7",
     "jquery": "^3.6.1",
     "moment": "^2.29.4",
     "profanity-hindi": "^1.1.0",

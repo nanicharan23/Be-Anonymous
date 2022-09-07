@@ -28,3 +28,9 @@
     height: 20px;
     width: auto;
 }
+
+.timeAgo{
+    margin-top: 5px;
+    font-weight: 100;
+    font-size: 13px;
+}
