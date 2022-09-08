@@ -32,5 +32,6 @@
 .timeAgo{
     margin-top: 5px;
     font-weight: 100;
-    font-size: 13px;
+    color: #ADB5BD;
+    font-size: smaller;
 }
