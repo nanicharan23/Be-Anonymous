@@ -32,8 +32,10 @@ function Reply(props) {
      * @returns {string} randomName with length 5.
      */
     const addReply = async () => {
-        if(reply.length == 0)
+        if(!validReply(reply)){
+            showNotValidReplyAlert()
             return
+        }
         
         try{
             const docRef = db.collection('posts').doc(props.postId)
@@ -57,9 +59,29 @@ function Reply(props) {
         }
     }
 
+    /**
+     * This method is used to validate if reply is valid or not
+     * @name validReply
+     * @param {string} reply
+     * @returns {number} Length of trimmed reply
+     */
+    const validReply = (reply) => {
+       return reply.trim().length > 0
+    }
+
+    const showNotValidReplyAlert = () => {
+        setReply("")
+
+        document.getElementById('inputReplyBox').placeholder = "Oops! Not Valid Reply.."
+        setTimeout(()=>{
+            document.getElementById('inputReplyBox').placeholder = 'Reply to Post..'
+        },1000)
+    }
+
     return (
         <div className='replyInputBoxOuter'>
             <input 
+            id="inputReplyBox"
             className='replyInputBox' 
             type="text"
             value={reply}
