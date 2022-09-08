@@ -72,7 +72,7 @@ function Form() {
             db.collection('posts').add({
                 secondPosted : currentSecond,
                 name : generateName(),
-                content: input.length == 0 ? "" : filter.clean(input),
+                content: input.length == 0 ? "" : (allEmojies(input) ? input : filter.clean(input)),
                 timestamp : formatedDate,
                 fileUrl : imageUrl,
                 replies : []
@@ -87,6 +87,41 @@ function Form() {
         }
     }
 
+    /**
+     * This method is used to verify is input has all emojies or not
+     * @name allEmojies
+     * @param {string} Input
+     * @returns {} none
+     */
+    const allEmojies = (input) => {
+        for(var i=0;i<input.length;i++){
+            var char = input.charAt(i)
+
+            if(isLetter(char))
+                return false
+        }
+        return true
+    }
+
+    /**
+     * This method is used to verify if given character is Letter or not
+     * @name isLetter
+     * @param {CharacterData} char
+     * @returns {} none
+     */
+    const isLetter = (char) => {
+        if (typeof char !== 'string') 
+            return false
+
+        return char.toLowerCase() !== char.toUpperCase()
+    }
+    
+    /**
+     * This method is play pop sound effect when post is posted.
+     * @name playPostedSoundEffect
+     * @param {}
+     * @returns {} none
+     */
     const playPostedSoundEffect = () => {
         var audio = new Audio(CorkSound)
         audio.muted = false
