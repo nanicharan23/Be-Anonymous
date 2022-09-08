@@ -5,6 +5,10 @@ import SendIcon from '@mui/icons-material/Send';
 import db from '../Firebase/Firebase'
 
 function Reply(props) {
+    // This is used to filter the bad words in reply.
+    var Filter = require('bad-words');
+    var filter = new Filter();
+
     const [reply, setReply] = useState("") // Sets the reply in input box 
 
     /**
@@ -23,6 +27,35 @@ function Reply(props) {
             randomName += characters.charAt(Math.floor(Math.random() * charactersLength))
         
         return randomName
+    }
+
+    /**
+     * This method is used to verify is input has all emojies or not
+     * @name allEmojies
+     * @param {string} Input
+     * @returns {} none
+     */
+         const allEmojies = (input) => {
+            for(var i=0;i<input.length;i++){
+                var char = input.charAt(i)
+    
+                if(isLetter(char))
+                    return false
+            }
+            return true
+        }
+    
+    /**
+     * This method is used to verify if given character is Letter or not
+     * @name isLetter
+     * @param {CharacterData} char
+     * @returns {} none
+     */
+     const isLetter = (char) => {
+        if (typeof char !== 'string') 
+            return false
+
+        return char.toLowerCase() !== char.toUpperCase()
     }
 
     /**
@@ -46,7 +79,7 @@ function Reply(props) {
 
             replies.push({
                 repliedUsername : generateName(), 
-                reply : reply,
+                reply : allEmojies(reply) ? reply : filter.clean(reply),
                 secondReplied : currentSecond
             })
 
