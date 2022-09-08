@@ -18,6 +18,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import CancelIcon from '@mui/icons-material/Cancel';
 
+import CorkSound from '../Audio/CorkSound.mp3'
+
 function Form() {
     // This is used to filter the bad words in content.
     var Filter = require('bad-words');
@@ -76,11 +78,19 @@ function Form() {
                 replies : []
             }).then((docRef) => db.collection('posts').doc(docRef.id).update({postId : docRef.id}))
             
+            playPostedSoundEffect()
+
             resetThingsAfterPosting()
         }
         catch(e){
             showInvalidInputAlert()
         }
+    }
+
+    const playPostedSoundEffect = () => {
+        var audio = new Audio(CorkSound)
+        audio.muted = false
+        audio.play();
     }
 
     /**
