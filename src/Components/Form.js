@@ -100,6 +100,8 @@ function Form() {
      * @returns {} none
      */
     const showInvalidInputAlert = () => {
+        setInput("")
+        
         document.getElementById("inputBox").style.border = "1px solid #ADB5BD"
         document.getElementById("inputBox").style.borderRadius  = "20px"
         document.getElementById("invalidInput").style.display="flex"
