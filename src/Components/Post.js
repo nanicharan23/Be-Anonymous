@@ -3,6 +3,8 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 import ReplyIcon from '@mui/icons-material/Reply';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+
+import Collapse from '@mui/material/Collapse';
 import '../CSS/Post.css'
 import Linkify from 'react-linkify';
 import Reply from './Reply';
@@ -13,10 +15,10 @@ import en from 'javascript-time-ago/locale/en'
 import db, { auth } from '../Firebase/Firebase';
 
 function Post(props) {
-  const [replyDisplay, setReplyDisplay] = useState("none") // Sets display of reply section
 
   const [filled, setFilled] = useState(false) // Sets whether like icon should be filled or bordered.
 
+  const [expanded, setExpanded] = useState(false)
   /**
    * @name getTimeAgo
    * @param {*} secondPosted 
@@ -129,16 +131,18 @@ function Post(props) {
                 {filled? <FavoriteIcon  id="filledLikeIcon" className='likeIcon'/>:<FavoriteBorderIcon  id="filledLikeIcon" className='likeIcon'/>}
                 <div className='likeText'>{props.likes}</div>
               </div>
-              <div className='replyButton' onClick={() => replyDisplay=="none" ? setReplyDisplay("block") : setReplyDisplay("none")}>
+              <div className='replyButton' onClick={() => setExpanded(!expanded)}>
                     <ReplyIcon className='replyIcon'/>
                     {props.replies && <div className='repliesCount'>{props.replies.length}</div>}
               </div>
             </div>
 
-            <div id="replySection" style={{"display":replyDisplay}}>
-              <Reply postId={props.postId}/>
-              <Replies postId={props.postId} replies={props.replies}/>
-            </div>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <div id="replySection">
+                <Reply postId={props.postId}/>
+                <Replies postId={props.postId} replies={props.replies}/>
+              </div>
+            </Collapse>
         </div>
     </div>
   )
