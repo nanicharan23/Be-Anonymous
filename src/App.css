@@ -2,8 +2,6 @@ body{
   background-color: #343A40;
 }
 .middle{
-  border-left: 1px solid #6C757D;
-  border-right: 1px solid #6C757D;
   min-height: 100vh;
   height: 100%;
   margin-top: 0px;
@@ -11,4 +9,11 @@ body{
 
 body::-webkit-scrollbar {
   display: none;
+}
+
+@media only screen and (min-width : 768px){
+    .middle{
+      border-left: 1px solid #6C757D;
+      border-right: 1px solid #6C757D;
+    }
 }

@@ -9,7 +9,7 @@ import 'firebase/compat/storage'
 function Delete() {
 
     const deletePosts = () => {
-        db.collection('posts').get().then(res => res.forEach(doc => {
+        db.collection('testPosts').get().then(res => res.forEach(doc => {
             doc.ref.delete();
         }))
 
