@@ -51,14 +51,15 @@ function Form() {
         e.preventDefault()
 
         try{
-            db.collection('testPosts').add({
+            db.collection('posts').add({
                 secondPosted : currentSecond,
                 name : auth.currentUser.displayName,
                 content: input.length == 0 ? "" : (allEmojies(input) ? input : filter.clean(input)),
                 timestamp : formatedDate,
                 fileUrl : imageUrl,
-                replies : []
-            }).then((docRef) => db.collection('testPosts').doc(docRef.id).update({postId : docRef.id}))
+                replies : [],
+                postLikes : 0
+            }).then((docRef) => db.collection('posts').doc(docRef.id).update({postId : docRef.id}))
             
             playPostedSoundEffect()
 
@@ -178,7 +179,7 @@ function Form() {
         const compressedImageName = compressedImage.name + v4()
 
         const storageRef = firebaseApp.storage().ref()
-        const fileRef = storageRef.child(`testPostImages/${compressedImageName}`)
+        const fileRef = storageRef.child(`postImages/${compressedImageName}`)
         await fileRef.put(compressedImage)
         
         setImageUrl(await fileRef.getDownloadURL())

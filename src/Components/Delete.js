@@ -13,6 +13,10 @@ function Delete() {
             doc.ref.delete();
         }))
 
+        db.collection('testLikes').get().then(res=> res.forEach(doc =>{
+            doc.ref.delete();
+        }))
+
         const storageRef = firebaseApp.storage().ref('testPostImages');
         storageRef.listAll().then((listResults) => {
           const promises = listResults.items.map((item) => {
@@ -20,6 +24,14 @@ function Delete() {
           });
           Promise.all(promises);
         });
+    }
+
+    const addLikesField = () => {
+        db.collection('posts').get().then(res => res.forEach(doc => {
+            doc.ref.update({
+                postLikes : 0
+            });
+        }))
     }
 
     return (

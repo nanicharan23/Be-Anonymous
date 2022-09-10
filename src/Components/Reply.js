@@ -53,7 +53,7 @@ function Reply(props) {
         }
         
         try{
-            const docRef = db.collection('testPosts').doc(props.postId)
+            const docRef = db.collection('posts').doc(props.postId)
             const doc = await docRef.get()
             const replies = doc.data().replies
 

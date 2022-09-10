@@ -14,10 +14,18 @@
 .postLeft{
     margin-right: 10px;
 }
+
 .postRight_1{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
+
+.userNameAndIcon{
+    display: flex;
+    align-items: center;
+}
+
 .username{
     font-size: 30px;
     margin-right: 10px;
@@ -51,28 +59,30 @@
     align-items: center;
 }
 
-.replyIcon{
+.likeButton{
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
+
+.likeText{
     margin-left: 5px;
+    color: #F8F9FA;
+}
+
+.post > .postRight > .postFooter > .likeButton > .likeIcon{
+    color: #F8F9FA;
 }
 
 .postFooter{
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     justify-content:space-between;
     align-items: center;
 }
 
 .repliesCount{
-    font-size: 12px;
-    /* font-weight: 300; */
-    background-color: #212529;
-    border-radius: 50px;
-    min-width: 25px;
-    width: auto;
-    height: auto;
-    text-align: center;
-    margin-right: 5px;
-    padding: 5px;
+    margin-left: 5px;
 }
 
 @media only screen and (min-width : 768px){
