@@ -24,6 +24,14 @@
     color: #ADB5BD;
 }
 
+.inputLimitExceedAlert{
+    margin-bottom: 10px;
+    font-weight: 100;
+    font-size:13px;
+    margin-left: 3px;
+    color: #ADB5BD;
+}
+
 input:focus{
     outline:none;
 }
