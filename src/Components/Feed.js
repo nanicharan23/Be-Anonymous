@@ -33,7 +33,7 @@ function Feed() {
             <div className='noPosts'> Be the first to Post!</div>
         }
 
-        {posts.map((post, index) => (
+        {posts.slice(0,20).map((post, index) => (
             <Post 
             key={index} 
             name={post.name} 
