@@ -124,12 +124,10 @@ function LoginAndSignUp(props) {
                 </div>
             </div>
             <div className='depressedLogos'>
-            <img src="https://cdn-icons-png.flaticon.com/512/7714/7714666.png" 
-                    className='hackerLogo'/>
-            <img src="https://cdn-icons-png.flaticon.com/512/5065/5065522.png" 
-                    className='hackerLogo'/>
+                <img src="https://cdn-icons-png.flaticon.com/512/843/843331.png" 
+                        className='hackerLogo'/>
             </div>
-            <div className='note'>You're always Anonymous.</div>
+            <div className='note'>Confess anything..Rant anyone..<br/>You're always Anonymous.</div>
         </div>
     )
 }
