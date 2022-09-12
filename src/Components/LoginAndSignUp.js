@@ -6,7 +6,9 @@ import {auth} from '../Firebase/Firebase'
 import $ from 'jquery'
 
 function LoginAndSignUp(props) {
-    
+    const [email, setEmail] = useState("") // Sets email when entered in input box
+    const [password, setPassword] = useState("") // Sets password when entered in input box
+
     const [warning, setWarning] = useState("")
 
     /**
@@ -33,8 +35,6 @@ function LoginAndSignUp(props) {
      * @returns {} none
      */
     const signUp = () => {
-        const email = document.getElementById('emailInput').value
-        const password = document.getElementById('passwordInput').value
 
         auth.createUserWithEmailAndPassword(email, password).then(async (credentials)=>{
             credentials.user.updateProfile({
@@ -114,8 +114,8 @@ function LoginAndSignUp(props) {
             <div className='welcomeMessage'>Couldn't share anything to anyone?? Then try this..</div>
             <div className='loginForm'>
                 <div className='loginInputs'>
-                    <input id="emailInput" type="text" className='emailInput' placeholder='Enter Email...' autoComplete="off"/><br/>
-                    <input id="passwordInput" type="password" className='passwordInput' placeholder='Enter Password...' autoComplete="off"/>
+                    <input id="emailInput" type="text" className='emailInput' placeholder='Enter Email...' autoComplete="off" value={email} onChange={e=>setEmail(e.target.value)}/><br/>
+                    <input id="passwordInput" type="password" className='passwordInput' placeholder='Enter Password...' autoComplete="off" value={password} onChange={e=>setPassword(e.target.value)}/>
                     <div id="weakPasswordAlert" className='weakPasswordAlert'>{warning}</div>
                 </div>
                 <div className='loginButtons'>
