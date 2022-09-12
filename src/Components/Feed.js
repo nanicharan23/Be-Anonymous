@@ -10,22 +10,11 @@ function Feed() {
 
     // This will get invoked when ever Feed component runs and fetches the posts from database.
     useEffect(()=>{
-        db.collection('posts').onSnapshot(snapshot => {
+        db.collection('posts').orderBy('secondPosted','desc').limit(20).onSnapshot(snapshot => {
             var listOfPosts = snapshot.docs.map(doc => doc.data())
-            sortPostsLatestToOldest(listOfPosts)
             setPosts(listOfPosts)
         })
     },[])
-
-    /**
-     * This method sorts the posts based on the second it got posted.
-     * @name sortPostsLatestToOldest
-     * @param {*} listOfPosts 
-     * @returns none
-     */
-    const sortPostsLatestToOldest = (listOfPosts) => {
-        listOfPosts.sort((a, b) => b.secondPosted - a.secondPosted)
-    }
     
   return (
     <div className='feed'>
@@ -33,7 +22,7 @@ function Feed() {
             <div className='noPosts'> Be the first to Post!</div>
         }
 
-        {posts.map((post, index) => (
+        {posts.slice(0,20).map((post, index) => (
             <Post 
             key={index} 
             name={post.name} 
@@ -43,6 +32,7 @@ function Feed() {
             postId={post.postId}
             replies={post.replies}
             secondPosted={post.secondPosted}
+            likes={post.postLikes}
             ></Post>
         ))}
     </div>

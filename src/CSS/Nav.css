@@ -1,6 +1,7 @@
 .navbar{
     background-color: #212529;
     height: auto;
+    align-items: center;
 }
 
 .navbar-brand{
@@ -8,6 +9,7 @@
     font-family: 'Alfa Slab One', cursive;
     text-decoration: none;
     font-size: 20px;
+    margin-left: 10px;
 }
 
 .logo{
@@ -22,4 +24,56 @@
 .mainLogoWithBadge{
     align-items: center;
     width: auto;
+}
+
+.hamburger{
+    color: #F8F9FA;
+}
+
+.nav-item{
+    color: #F8F9FA;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 300;
+
+}
+
+.signoutButton{
+    display: flex;
+    align-items: center;
+}
+
+.signoutText{
+    margin-left: 5px;
+}
+
+.emailButton{
+    display: flex;
+    align-items: center;
+}
+
+.emailText{
+    margin-left: 5px;
+}
+
+.usernameButton{
+    display: flex;
+    align-items: center;
+}
+
+.usernameText{
+    margin-left: 5px;
+}
+.nav-item{
+    cursor: pointer;
+}
+@media only screen and (min-width : 992px){
+    .nav-item{
+        margin-left: 130px;
+        padding-bottom: 15px;
+    }
+
+    .nav-elements{
+        align-items: center;
+    }
 }

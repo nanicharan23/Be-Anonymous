@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import '../CSS/Reply.css'
 import SendIcon from '@mui/icons-material/Send';
 
-import db from '../Firebase/Firebase'
+import db, { auth } from '../Firebase/Firebase'
 
 function Reply(props) {
     // This is used to filter the bad words in reply.
@@ -10,24 +10,6 @@ function Reply(props) {
     var filter = new Filter();
 
     const [reply, setReply] = useState("") // Sets the reply in input box 
-
-    /**
-     * This method is used to generate random names
-     * @name generateName
-     * @param none
-     * @returns {string} randomName with length 5.
-     */
-    const generateName = () => {
-        let length = 5
-        const characters = 'abcdefghijklmnopqrstuvwxyz'
-        let randomName = ' '
-        const charactersLength = characters.length
-
-        for(let i = 0; i < length; i++) 
-            randomName += characters.charAt(Math.floor(Math.random() * charactersLength))
-        
-        return randomName
-    }
 
     /**
      * This method is used to verify is input has all emojies or not
@@ -78,7 +60,7 @@ function Reply(props) {
             const currentSecond = new Date().getTime() / 1000
 
             replies.push({
-                repliedUsername : generateName(), 
+                repliedUsername : auth.currentUser.displayName, 
                 reply : allEmojies(reply) ? reply : filter.clean(reply),
                 secondReplied : currentSecond
             })

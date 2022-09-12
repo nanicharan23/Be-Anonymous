@@ -6,7 +6,7 @@ import {v4} from 'uuid'
 
 import imageCompression from 'browser-image-compression'
 
-import {firebaseApp} from '../Firebase/Firebase'   
+import {auth, firebaseApp} from '../Firebase/Firebase'   
 import db from '../Firebase/Firebase'
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -36,24 +36,6 @@ function Form() {
     const [imageUrl, setImageUrl] = useState(null) // Sets the file url when file is uploaded
 
     /**
-     * This method is used to generate random names
-     * @name generateName
-     * @param none
-     * @returns {string} randomName with length 5.
-     */
-    const generateName = () => {
-        let length = 5
-        const characters = 'abcdefghijklmnopqrstuvwxyz'
-        let randomName = ' '
-        const charactersLength = characters.length
-
-        for(let i = 0; i < length; i++) 
-            randomName += characters.charAt(Math.floor(Math.random() * charactersLength))
-        
-        return randomName
-    }
-
-    /**
      * This method is used to add new post to database(Cloud Firestore).
      * @name sendPost
      * @param {EventListener} Event when clicked post.
@@ -71,11 +53,12 @@ function Form() {
         try{
             db.collection('posts').add({
                 secondPosted : currentSecond,
-                name : generateName(),
+                name : auth.currentUser.displayName,
                 content: input.length == 0 ? "" : (allEmojies(input) ? input : filter.clean(input)),
                 timestamp : formatedDate,
                 fileUrl : imageUrl,
-                replies : []
+                replies : [],
+                postLikes : 0
             }).then((docRef) => db.collection('posts').doc(docRef.id).update({postId : docRef.id}))
             
             playPostedSoundEffect()
