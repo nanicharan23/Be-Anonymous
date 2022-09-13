@@ -5,7 +5,6 @@ import Nav from './Components/Nav'
 import Feed from './Components/Feed'
 import Form from './Components/Form';
 import Footer from './Components/Footer';
-import Delete from './Components/Delete'
 import { auth } from './Firebase/Firebase'
 import LoginAndSignUp from './Components/LoginAndSignUp';
 
@@ -34,7 +33,7 @@ function App() {
           <Feed/>
         </div>}
       </div>
-      <Footer/>
+      {!displayLoginPage && <Footer/>}
     </div>
   );
 }

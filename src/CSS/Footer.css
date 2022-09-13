@@ -1,5 +1,6 @@
 .footer{
-    height: 60px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     background-color: #212529;
 }
 
@@ -8,4 +9,23 @@
     align-items: center;
     padding-top: 20px;
     text-align: center;
+}
+
+.container > .footer > .homeIcon > .footerIcons{
+    width: 30px;
+    height: auto;
+    color: #ADB5BD;
+}
+
+.container > .footer > .homeIcon{
+    border-right: 1px solid #ADB5BD;
+}
+.container > .footer > .postIcon > .footerIcons{
+    width: 30px;
+    height: auto;
+    color: #ADB5BD;
+}
+
+.col-6{
+    cursor: pointer;
 }
