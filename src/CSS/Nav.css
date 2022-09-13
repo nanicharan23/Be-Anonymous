@@ -38,13 +38,32 @@
 
 }
 
+.usernameIcon{
+    width: 30px;
+    height: auto;
+}
+
+.emailIcon{
+    width: 30px;
+    height: auto;
+}
+
+.signOutIcon{
+    width: 30px;
+    height: auto;
+}
+
 .signoutButton{
     display: flex;
     align-items: center;
+    background-color: #343A40;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
 }
 
 .signoutText{
     margin-left: 5px;
+    color: #F8F9FA;
 }
 
 .emailButton{
@@ -66,6 +85,7 @@
 }
 .nav-item{
     cursor: pointer;
+    width: fit-content;
 }
 @media only screen and (min-width : 992px){
     .nav-item{

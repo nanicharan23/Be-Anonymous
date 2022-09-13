@@ -2,9 +2,6 @@ import React,{useState} from 'react'
 import '../CSS/Nav.css'
 
 import MenuIcon from '@mui/icons-material/Menu';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import EmailIcon from '@mui/icons-material/Email';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { auth } from '../Firebase/Firebase';
 
@@ -50,19 +47,19 @@ function Nav() {
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <div className="usernameButton">
-                    <AccountCircleIcon/>
+                    <img className='usernameIcon' src="https://cdn-icons-png.flaticon.com/512/668/668709.png"/>
                     <div className="usernameText">{currentUsername}</div>
                   </div>
                 </li>
                 <li className="nav-item">
                   <div className="emailButton">
-                    <EmailIcon/>
+                    <img className='emailIcon' src='https://cdn-icons-png.flaticon.com/512/6806/6806987.png'/>
                     <div className="emailText">{currentUserEmail}</div>
                   </div>
                 </li>
                 <li className="nav-item">
                   <div className="signoutButton" onClick={()=>signOut()}>
-                    <ExitToAppIcon/>
+                    <img className='signOutIcon' src='https://cdn-icons-png.flaticon.com/512/6807/6807166.png'/>
                     <div className="signoutText">Sign Out</div>
                   </div> 
                 </li>
