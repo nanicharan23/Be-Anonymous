@@ -1,9 +1,9 @@
 import React,{useState, useEffect} from 'react'
-import ReplyIcon from '@mui/icons-material/Reply';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import ForumIcon from '@mui/icons-material/Forum';
 import Collapse from '@mui/material/Collapse';
+
 import '../CSS/Post.css'
 import Linkify from 'react-linkify';
 import Reply from './Reply';
@@ -133,7 +133,7 @@ function Post(props) {
                 <div className='likeText'>{props.likes}</div>
               </div>
               <div className='replyButton' onClick={() => setExpanded(!expanded)}>
-                    <ReplyIcon className='replyIcon'/>
+                    <ForumIcon className='replyIcon'/>
                     {props.replies && <div className='repliesCount'>{props.replies.length}</div>}
               </div>
             </div>

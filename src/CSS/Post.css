@@ -59,6 +59,10 @@
     align-items: center;
 }
 
+.replyIcon{
+    color: #F8F9FA;
+}
+
 .likeButton{
     display: flex;
     cursor: pointer;
