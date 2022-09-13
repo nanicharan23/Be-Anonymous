@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from 'react'
-import VerifiedIcon from '@mui/icons-material/Verified';
 import ReplyIcon from '@mui/icons-material/Reply';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -13,6 +12,8 @@ import Replies from './Replies';
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import db, { auth } from '../Firebase/Firebase';
+
+import VerifiedIconLogo from '../Images/VerifiedIcon.png'
 
 function Post(props) {
 
@@ -117,7 +118,7 @@ function Post(props) {
             <div className='postRight_1'>
               <div className='userNameAndIcon'>
                 <div className='username'>{props.name}</div>
-                <VerifiedIcon></VerifiedIcon>
+                <img className="verifiedIcon" src={VerifiedIconLogo}/>
               </div>
               <div className='timestamp'>{getTimeAgo(props.secondPosted)}</div>
             </div>
@@ -128,7 +129,7 @@ function Post(props) {
 
             <div className='postFooter'>
               <div className='likeButton' onClick={()=>clickedLike()}>
-                {filled? <FavoriteIcon  id="filledLikeIcon" className='likeIcon'/>:<FavoriteBorderIcon  id="filledLikeIcon" className='likeIcon'/>}
+                {filled? <FavoriteIcon  id="filledLikeIcon" className='filledLikeIcon'/>:<FavoriteBorderIcon  id="borderedLikeIcon" className='borderLikeIcon'/>}
                 <div className='likeText'>{props.likes}</div>
               </div>
               <div className='replyButton' onClick={() => setExpanded(!expanded)}>
