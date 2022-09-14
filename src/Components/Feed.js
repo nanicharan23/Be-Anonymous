@@ -10,7 +10,7 @@ function Feed() {
 
     // This will get invoked when ever Feed component runs and fetches the posts from database.
     useEffect(()=>{
-        db.collection('posts').orderBy('secondPosted','desc').limit(20).onSnapshot(snapshot => {
+        db.collection('posts').orderBy('secondPosted','desc').onSnapshot(snapshot => {
             var listOfPosts = snapshot.docs.map(doc => doc.data())
             setPosts(listOfPosts)
         })
@@ -22,7 +22,7 @@ function Feed() {
             <div className='noPosts'> Be the first to Post!</div>
         }
 
-        {posts.slice(0,20).map((post, index) => (
+        {posts.map((post, index) => (
             <Post 
             key={index} 
             name={post.name} 
