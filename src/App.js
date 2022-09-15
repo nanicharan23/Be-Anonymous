@@ -33,7 +33,6 @@ function App() {
           <Feed/>
         </div>}
       </div>
-      {!displayLoginPage && <Footer/>}
     </div>
   );
 }
