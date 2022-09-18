@@ -262,7 +262,7 @@ function Form() {
                         placeholder="What's going on..."
                         value={input}
                         onChange={e=>setInput(e.target.value)}
-                        maxLength="1000"
+                        maxLength="2000"
                         ></input>
                         {input.length != 0 && <CancelIcon className="clearIcon" onClick={clickedClear}/>}
                     </div>
@@ -270,7 +270,7 @@ function Form() {
                         <div>Drop Valid Msg or Upload a Pic..</div>
                         <WarningRoundedIcon className="warningIcon"/>
                     </div>
-                    {input.length == 1000 && <div className='inputLimitExceedAlert'>Max 1000 Characters...</div>}
+                    {input.length == 2000 && <div className='inputLimitExceedAlert'>Max 1000 Characters...</div>}
                     <input 
                     id="inputImage"
                     className='imageInput'
