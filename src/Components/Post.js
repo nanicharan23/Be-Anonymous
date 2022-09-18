@@ -3,6 +3,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ForumIcon from '@mui/icons-material/Forum';
 import Collapse from '@mui/material/Collapse';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 import '../CSS/Post.css'
 import Linkify from 'react-linkify';
@@ -20,6 +24,11 @@ function Post(props) {
   const [filled, setFilled] = useState(false) // Sets whether like icon should be filled or bordered.
 
   const [expanded, setExpanded] = useState(false)
+
+  const [severity, setSeverity] = useState("success")
+  const [openSnackBar, setOpenSnackBar] = useState(false)
+  const [snackBarText, setSnackBarText] = useState("")
+
   /**
    * @name getTimeAgo
    * @param {*} secondPosted 
@@ -87,6 +96,19 @@ function Post(props) {
       }
   }
 
+  const deletePost = () => {
+    const currentUser = auth.currentUser.displayName;
+
+    if(currentUser!=props.name){
+      setSnackBarText("Can't delete, you didn't post it.")
+      setSeverity("error")
+      setOpenSnackBar(true)
+      return
+    }
+
+    db.collection('posts').doc(props.postId).delete()
+  }
+
   useEffect(() => {
     const currentUserId = auth.currentUser.uid
     const currentPostId = props.postId
@@ -120,7 +142,15 @@ function Post(props) {
                 <div className='username'>{props.name}</div>
                 <img className="verifiedIcon" src={VerifiedIconLogo}/>
               </div>
-              <div className='timestamp'>{getTimeAgo(props.secondPosted)}</div>
+              <div className='timeAndDots'>
+                <div className='timestamp'>{getTimeAgo(props.secondPosted)}</div>
+                <MoreVertIcon className='threeDots dropdown-toggle' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" onClick={deletePost}>
+                    <div>Delete this Post</div>
+                    <DeleteIcon className="deleteIcon"/></a>
+                </div>
+              </div>
             </div>
             <Linkify>
               <div>{props.content}</div>
@@ -145,6 +175,11 @@ function Post(props) {
               </div>
             </Collapse>
         </div>
+        <Snackbar open={openSnackBar} autoHideDuration={2000} onClose={()=>setOpenSnackBar(false)}>
+          <MuiAlert severity={severity} sx={{ width: '100%' }} onClose={()=>setOpenSnackBar(false)}>
+            {snackBarText}
+          </MuiAlert>
+      </Snackbar>
     </div>
   )
 }

@@ -33,7 +33,6 @@
 }
 
 .timestamp{
-    margin-top: 10px;
     font-weight: 100;
     color: #ADB5BD;
     font-size: smaller;
@@ -94,6 +93,30 @@
     margin-left: 5px;
 }
 
+.timeAndDots{
+    display: flex;
+    align-items: center;
+}
+
+.threeDots{
+    margin-left: 10px;
+}
+
+.dropdown-menu{
+    background-color: #495057;
+    border: none;
+}
+.dropdown-item{
+    color: white;
+    display: flex;
+    text-decoration: none;
+    background:none;
+    cursor: pointer;
+}
+
+.deleteIcon{
+    margin-left: 10px;
+}
 @media only screen and (min-width : 768px){
     .postImage{
         width: 500px;
