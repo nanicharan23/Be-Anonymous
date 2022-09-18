@@ -15,7 +15,7 @@ import Replies from './Replies';
 
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
-import db, { auth } from '../Firebase/Firebase';
+import db, { auth, firebaseApp } from '../Firebase/Firebase';
 
 import VerifiedIconLogo from '../Images/VerifiedIcon.png'
 
@@ -96,6 +96,11 @@ function Post(props) {
       }
   }
 
+  /**
+   * This method is triggered when user deletes a post.
+   * @name deletePost
+   * @param {} none
+   */
   const deletePost = () => {
     const currentUser = auth.currentUser.displayName;
 
@@ -106,7 +111,11 @@ function Post(props) {
       return
     }
 
-    db.collection('posts').doc(props.postId).delete()
+    db.collection('posts').doc(props.postId).delete() // Deleting current post from firestore
+    const imageRef = firebaseApp.storage().refFromURL(props.fileUrl)
+
+    imageRef.delete() // Deleting current post image from firebase storage
+
   }
 
   useEffect(() => {
