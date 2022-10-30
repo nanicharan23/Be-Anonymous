@@ -32,7 +32,7 @@
 
 .nav-item{
     color: #F8F9FA;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 20px;
     font-weight: 300;
 
@@ -43,14 +43,14 @@
     height: auto;
 }
 
-.emailIcon{
+.signOutIcon{
     width: 30px;
     height: auto;
 }
 
-.signOutIcon{
-    width: 30px;
-    height: auto;
+.collapse > .navbar-nav > .nav-item > .usernameButton > .username {
+
+    color: #848484;
 }
 
 .signoutButton{
@@ -64,24 +64,29 @@
 .signoutText{
     margin-left: 5px;
     color: #F8F9FA;
+    font-weight: lighter;
+}
+
+.collapse > .navbar-nav > .nav-item > .emailButton > .email {
+    color: #848484;
+    font-size: 30px;
+    font-weight: lighter;
 }
 
 .emailButton{
-    display: flex;
     align-items: center;
 }
 
 .emailText{
-    margin-left: 5px;
+    font-weight: lighter;
 }
 
 .usernameButton{
-    display: flex;
     align-items: center;
 }
 
 .usernameText{
-    margin-left: 5px;
+    font-weight: lighter;
 }
 .nav-item{
     cursor: pointer;
@@ -95,5 +100,20 @@
 
     .nav-elements{
         align-items: center;
+    }
+
+    .navbar-nav{
+        align-items: center;
+    }
+
+    .collapse > .navbar-nav > .nav-item > .usernameButton > .username {
+        font-size: 20px;;
+        color: #848484;
+    }
+
+    .collapse > .navbar-nav > .nav-item > .emailButton > .email {
+        color: #848484;
+        font-size: 20px;
+        font-weight: lighter;
     }
 }

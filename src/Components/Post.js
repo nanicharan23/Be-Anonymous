@@ -141,7 +141,7 @@ function Post(props) {
   return (
     <div className='post'>
         <div className='postLeft'>
-            <img src='https://cdn-icons-png.flaticon.com/512/3393/3393852.png' 
+            <img src='https://cdn-icons-png.flaticon.com/512/1051/1051127.png' 
             className='profileIcon'/>
         </div>
 

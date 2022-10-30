@@ -250,7 +250,7 @@ function Form() {
         <div>
             <div className='form'>
                 <div className='formLeft'>
-                    <img src='https://cdn-icons-png.flaticon.com/512/3393/3393852.png' 
+                    <img src='https://cdn-icons-png.flaticon.com/512/1051/1051127.png' 
                     className='profileIcon'/>
                 </div>
                 <div className='formRight'>

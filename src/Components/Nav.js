@@ -47,13 +47,13 @@ function Nav() {
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <div className="usernameButton">
-                    <img className='usernameIcon' src="https://cdn-icons-png.flaticon.com/512/668/668709.png"/>
-                    <div className="usernameText">{currentUsername}</div>
+                      <div className='username'>Anonymous ID</div>
+                      <div className="usernameText">{currentUsername}</div>
                   </div>
                 </li>
                 <li className="nav-item">
                   <div className="emailButton">
-                    <img className='emailIcon' src='https://cdn-icons-png.flaticon.com/512/6806/6806987.png'/>
+                    <div className='email'>Email</div>
                     <div className="emailText">{currentUserEmail}</div>
                   </div>
                 </li>
