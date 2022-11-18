@@ -1,0 +1,32 @@
+.profile-profileIcon{
+    width: 40%;
+    height: auto;
+}
+
+.profile{
+    margin-top: 10px;
+}
+
+.info{
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #6C757D;
+}
+.profileHeading{
+    color: #848484;
+    font-weight: lighter;
+    font-size: 40px;
+}
+
+.profileDetails{
+    color: #F8F9FA;
+    font-weight: lighter;
+    font-size:calc(20px + 1.5vw);
+}
+
+@media only screen and (min-width : 992px){
+    .profile-profileIcon{
+        width: 20%;
+        height: auto;
+    }
+}

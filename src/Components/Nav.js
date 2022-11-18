@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
+import { Link,useNavigate } from 'react-router-dom';
 import '../CSS/Nav.css'
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -34,7 +35,7 @@ function Nav() {
   return (
     <div className='sticky-top'>
         <nav className="navbar navbar-expand-lg ">
-          <div className="nav-elements container">
+          <div className="nav-elements container-fluid">
             <div>
               <img src="https://cdn-icons-png.flaticon.com/512/1051/1051127.png" className='mainLogo'/>
               <div className="navbar-brand">Be Anonymous</div>
@@ -48,20 +49,26 @@ function Nav() {
                 <li className="nav-item">
                   <div className="usernameButton">
                       <div className='username'>Anonymous ID</div>
-                      <div className="usernameText">{currentUsername}</div>
+                      <div className="usernameText" style={{color: "white"}}>{currentUsername}</div>
                   </div>
                 </li>
                 <li className="nav-item">
-                  <div className="emailButton">
-                    <div className='email'>Email</div>
-                    <div className="emailText">{currentUserEmail}</div>
+                  <div className="usernameButton">
+                      <div className='username'><Link to="/" style={{ textDecoration: 'none', color:'#848484' }}>Home</Link></div>
+                  </div>
+                </li>
+              <li className="nav-item">
+                  <div className="usernameButton">
+                      <div className='username'><Link to="/profile" style={{ textDecoration: 'none', color:'#848484' }}><div className='profileName'>Profile</div></Link></div>
                   </div>
                 </li>
                 <li className="nav-item">
+                <Link to="/">
                   <div className="signoutButton" onClick={()=>signOut()}>
-                    <img className='signOutIcon' src='https://cdn-icons-png.flaticon.com/512/6807/6807166.png'/>
-                    <div className="signoutText">Sign Out</div>
+                      <img className='signOutIcon' src='https://cdn-icons-png.flaticon.com/512/6807/6807166.png'/>
+                      <div className="signoutText">Sign Out</div>
                   </div> 
+                </Link>
                 </li>
               </ul>
             </div>

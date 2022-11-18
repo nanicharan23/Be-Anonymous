@@ -101,21 +101,40 @@ function Post(props) {
    * @name deletePost
    * @param {} none
    */
-  const deletePost = () => {
+  const deletePost = async () => {
     const currentUser = auth.currentUser.displayName;
 
+    const secondPosted = props.secondPosted
+    const currentSecond = new Date().getTime() / 1000
+
     if(currentUser!=props.name){
-      setSnackBarText("Can't delete, you didn't post it.")
-      setSeverity("error")
-      setOpenSnackBar(true)
+      snackBarContext("Can't delete, you didn't post it.","error")
       return
     }
+    else if(currentSecond - secondPosted > 3600){
+      snackBarContext("Can't delete, it's too late.."+"\n"+"You can only delete within an hour.","error")
+      return
+    }
+
+    snackBarContext("Post Deleted Successfully!!","success")
 
     db.collection('posts').doc(props.postId).delete() // Deleting current post from firestore
     const imageRef = firebaseApp.storage().refFromURL(props.fileUrl)
 
-    imageRef.delete() // Deleting current post image from firebase storage
+    await imageRef.delete() // Deleting current post image from firebase storage
 
+  }
+
+  /**
+   * This method is sets the snack bar context before displaying
+   * @name snackBarContext
+   * @param {} message
+   * @param {} messageType
+   */
+  const snackBarContext = (message, messageType) => {
+    setSnackBarText(message)
+    setSeverity(messageType)
+    setOpenSnackBar(true)
   }
 
   useEffect(() => {
@@ -154,8 +173,8 @@ function Post(props) {
               <div className='timeAndDots'>
                 <div className='timestamp'>{getTimeAgo(props.secondPosted)}</div>
                 <MoreVertIcon className='threeDots dropdown-toggle' id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" onClick={deletePost}>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a className="dropdown-item" onClick={deletePost}>
                     <div>Delete this Post</div>
                     <DeleteIcon className="deleteIcon"/></a>
                 </div>
@@ -186,7 +205,7 @@ function Post(props) {
               </div>
             </Collapse>
         </div>
-        <Snackbar open={openSnackBar} autoHideDuration={2000} onClose={()=>setOpenSnackBar(false)}>
+        <Snackbar open={openSnackBar} autoHideDuration={3000} onClose={()=>setOpenSnackBar(false)}>
           <MuiAlert severity={severity} sx={{ width: '100%' }} onClose={()=>setOpenSnackBar(false)}>
             {snackBarText}
           </MuiAlert>

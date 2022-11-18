@@ -48,8 +48,7 @@
     height: auto;
 }
 
-.collapse > .navbar-nav > .nav-item > .usernameButton > .username {
-
+.nav-item {
     color: #848484;
 }
 
@@ -92,6 +91,11 @@
     cursor: pointer;
     width: fit-content;
 }
+
+a{
+    color: #848484;
+    text-decoration: none;
+}
 @media only screen and (min-width : 992px){
     .nav-item{
         margin-left: 130px;
@@ -108,7 +112,6 @@
 
     .collapse > .navbar-nav > .nav-item > .usernameButton > .username {
         font-size: 20px;;
-        color: #848484;
     }
 
     .collapse > .navbar-nav > .nav-item > .emailButton > .email {
