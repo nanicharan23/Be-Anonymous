@@ -4,6 +4,8 @@ import Post from '../Components/Post'
 import db from '../Firebase/Firebase'
 import '../CSS/Feed.css'
 
+import LinearProgress from '@mui/material/LinearProgress';
+
 function Feed() {
 
     const [posts, setPosts] = useState([]) // This is used to set posts.
@@ -19,7 +21,10 @@ function Feed() {
   return (
     <div className='feed'>
         {posts.length == 0 && 
-            <div className='noPosts'> Be the first to Post!</div>
+            <div className='noPosts'>
+                <div>Loading..</div>
+                <LinearProgress color="inherit" />
+            </div>
         }
 
         {posts.map((post, index) => (
