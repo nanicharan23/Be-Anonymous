@@ -2,6 +2,7 @@ import React from 'react'
 import '../CSS/Delete.css'
 import db from '../Firebase/Firebase'
 import { firebaseApp } from '../Firebase/Firebase';
+import { v4 as uuidv4 } from 'uuid';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage'
@@ -26,17 +27,23 @@ function Delete() {
         });
     }
 
-    const addLikesField = () => {
+    const addReplyID = () => {
         db.collection('posts').get().then(res => res.forEach(doc => {
+            var currentReplies = doc.data().replies
+            
+            for(var reply of currentReplies){
+                Object.assign(reply, {replyId : uuidv4()})
+            }
+            
             doc.ref.update({
-                postLikes : 0
-            });
+                replies : currentReplies
+            })
         }))
     }
 
     return (
-        <button className='delete' onClick={deletePosts}>
-            <div className='deleteText'>Delete All Posts</div>
+        <button className='delete' onClick={addReplyID}>
+            <div className='deleteText'>Add ID's to Replies</div>
         </button>
     )
 }

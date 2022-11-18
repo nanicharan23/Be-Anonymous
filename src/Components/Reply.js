@@ -3,6 +3,7 @@ import '../CSS/Reply.css'
 import SendIcon from '@mui/icons-material/Send';
 
 import db, { auth } from '../Firebase/Firebase'
+import { v4 as uuidv4 } from 'uuid';
 
 function Reply(props) {
     // This is used to filter the bad words in reply.
@@ -60,6 +61,7 @@ function Reply(props) {
             const currentSecond = new Date().getTime() / 1000
 
             replies.push({
+                replyId : uuidv4(),
                 repliedUsername : auth.currentUser.displayName, 
                 reply : allEmojies(reply) ? reply : filter.clean(reply),
                 secondReplied : currentSecond
