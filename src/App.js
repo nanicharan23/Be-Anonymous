@@ -6,6 +6,7 @@ import Nav from './Components/Nav'
 import Profile from './Components/Profile';
 import { auth } from './Firebase/Firebase'
 import Home from './Components/Home';
+import About from './Components/About';
 
 function App() {
   const [displayLoginPage, setDisplayLoginPage] = useState(false) // Sets whether to display login page or not.
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/profile">
               {!displayLoginPage && <Profile/>}
+            </Route>
+            <Route path="/about">
+              {!displayLoginPage && <About/>}
             </Route>
           </Switch>
     </div>

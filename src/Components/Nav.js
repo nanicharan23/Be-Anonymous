@@ -63,6 +63,11 @@ function Nav() {
                   </div>
                 </li>
                 <li className="nav-item">
+                  <div className="usernameButton" data-toggle="collapse" data-target="#navbarSupportedContent">
+                      <div className='username'><Link to="/about" style={{ textDecoration: 'none', color:'#848484' }}><div className='profileName'>About</div></Link></div>
+                  </div>
+                </li>
+                <li className="nav-item">
                 <Link to="/">
                   <div className="signoutButton" onClick={()=>signOut()}>
                       <img className='signOutIcon' src='https://cdn-icons-png.flaticon.com/512/6807/6807166.png'/>
