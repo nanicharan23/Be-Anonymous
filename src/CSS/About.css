@@ -28,6 +28,17 @@
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
+.developer-subtitle{
+    font-weight: lighter;
+}
+
+.about-developer{
+    border: 1px solid #ADB5BD;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
 @media only screen and (min-width : 768px){
     .about{
         padding-top: 20px;
