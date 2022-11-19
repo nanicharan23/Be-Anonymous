@@ -53,12 +53,12 @@ function Nav() {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <div className="usernameButton">
+                  <div className="usernameButton" data-toggle="collapse" data-target="#navbarSupportedContent">
                       <div className='username'><Link to="/" style={{ textDecoration: 'none', color:'#848484' }}>Home</Link></div>
                   </div>
                 </li>
               <li className="nav-item">
-                  <div className="usernameButton">
+                  <div className="usernameButton" data-toggle="collapse" data-target="#navbarSupportedContent">
                       <div className='username'><Link to="/profile" style={{ textDecoration: 'none', color:'#848484' }}><div className='profileName'>Profile</div></Link></div>
                   </div>
                 </li>
