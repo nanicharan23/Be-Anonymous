@@ -3,6 +3,8 @@ import '../CSS/Profile.css'
 import Post from '../Components/Post'
 import {firebaseApp} from '../Firebase/Firebase'   
 import db from '../Firebase/Firebase'
+import VerifiedIconLogo from '../Images/VerifiedIcon.png'
+
 function Profile() {
     const [posts, setPosts] = useState([]) // This is used to set posts.
 
@@ -33,7 +35,7 @@ function Profile() {
             <img src='https://cdn-icons-png.flaticon.com/512/1051/1051127.png' className='profile-profileIcon'/>
             <div>
                 <div className='profileHeading'>Anonymous ID</div>
-                <div className='profileDetails'>{name}</div>
+                <div className='profileDetails'>{name} <img className="verifiedIcon" src={VerifiedIconLogo}/></div>
             </div>
             <div>
                 <div className='profileHeading'>Email</div>
