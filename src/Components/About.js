@@ -16,7 +16,7 @@ function About() {
                     <img src={DeveloperImage} className='img-fluid developer-image shadow-lg'/>
                     <div className='about-developer'>
                         <div className='developer-name'>Sri Charan</div>
-                        <div className='developer-subtitle'><b>Founder</b> & <b>CEO</b> of Be Anonymous</div>
+                        <div className='developer-subtitle'><b>Founder</b>, <b>CEO</b> & <b>CTO</b> of Be Anonymous</div>
                     </div>
                     <div className='description'>Sri Charan is a Software Engineer who is always passionate about programming and always hunger to learn new things. He is having 1+ years of work experience. He is an Ex-Amazonian where he worked as SDE-1.  He is currently working at Goldman Sachs as Software Engineer and CEO of Be Anonymous.</div>
                 </div>
