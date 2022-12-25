@@ -3,7 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import '../CSS/Nav.css'
 
 import MenuIcon from '@mui/icons-material/Menu';
-
+import VerifiedIconLogo from '../Images/VerifiedIcon.png'
 import { auth } from '../Firebase/Firebase';
 
 function Nav() {
@@ -49,7 +49,9 @@ function Nav() {
                 <li className="nav-item">
                   <div className="usernameButton">
                       <div className='username'>Anonymous ID</div>
-                      <div className="usernameText" style={{color: "white"}}>{currentUsername}</div>
+                      <div className='anonymousId'>
+                        <div className="usernameText" style={{color: "white"}}>{currentUsername}<img className="verifiedIcon" style={{marginLeft: "5px"}} src={VerifiedIconLogo}/></div>
+                      </div>
                   </div>
                 </li>
                 <li className="nav-item">
