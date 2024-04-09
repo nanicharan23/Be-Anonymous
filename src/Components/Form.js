@@ -196,7 +196,10 @@ function Form() {
      * @returns {} none
      */
     const changePostButtonState = (disabled,opacity) => {
-        document.getElementById("buttonPost").setAttribute("disabled",disabled)
+        { disabled ? 
+            document.getElementById("buttonPost").setAttribute("disabled",disabled): 
+            document.getElementById("buttonPost").removeAttribute("disabled")
+        }
         document.getElementById("buttonPost").style.opacity = opacity;
     }
 

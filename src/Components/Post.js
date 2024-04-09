@@ -108,11 +108,11 @@ function Post(props) {
     const currentSecond = new Date().getTime() / 1000
 
     if(currentUser!=props.name){
-      snackBarContext("Can't delete, you didn't post it.","error")
+      snackBarContext("Sorry, you're not the author of this post.","error")
       return
     }
     else if(currentSecond - secondPosted > 3600){
-      snackBarContext("Can't delete, it's too late.."+"\n"+"You can only delete within an hour.","error")
+      snackBarContext("Sorry, it's too late.."+"\n"+"You can only delete within an hour.","error")
       return
     }
 
@@ -187,7 +187,7 @@ function Post(props) {
 
             <div className='postFooter'>
               <div className='likeButton' onClick={()=>clickedLike()}>
-                {filled? <FavoriteIcon  id="filledLikeIcon" className='filledLikeIcon'/>:<FavoriteBorderIcon  id="borderedLikeIcon" className='borderLikeIcon'/>}
+                {!filled ? <FavoriteBorderIcon  id="borderedLikeIcon" className='borderLikeIcon'/> : <FavoriteIcon  id="filledLikeIcon" className='filledLikeIcon'/>}
                 <div className='likeText'><b>{props.likes}</b> {props.likes==1?"Like":"Likes"}</div>
               </div>
               <div className='replyButton' onClick={() => setExpanded(!expanded)}>
