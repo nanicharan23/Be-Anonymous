@@ -1,6 +1,7 @@
 import React from 'react'
 import '../CSS/About.css';
 import DeveloperImage from '../Images/Developer.JPG'
+import signatureImage from '../Images/signature.png'
 
 function About() {
   return (
@@ -19,6 +20,7 @@ function About() {
                         <div className='developer-subtitle'><b>Founder</b>, <b>CEO</b> & <b>CTO</b> of Be Anonymous</div>
                     </div>
                     <div className='description'>Sri Charan is a Software Engineer who is always passionate about programming and always hunger to learn new things. He is having 1+ years of work experience. He is an Ex-Amazonian where he worked as SDE-1.  He is currently working at Goldman Sachs as Software Engineer and CEO of Be Anonymous.</div>
+                    <img src={signatureImage} className='img-fluid signature'/>
                 </div>
             </div>
         </div>

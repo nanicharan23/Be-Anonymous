@@ -15,7 +15,7 @@ import 'firebase/compat/storage'
 import TagIcon from '@mui/icons-material/Tag';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import LinearProgress from '@mui/material/LinearProgress';
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
+import AnnouncementIcon from '@mui/icons-material/Announcement';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 import CorkSound from '../Audio/CorkSound.mp3'
@@ -120,16 +120,15 @@ function Form() {
     const showInvalidInputAlert = () => {
         setInput("")
         
-        document.getElementById("inputBox").style.border = "1px solid #ADB5BD"
-        document.getElementById("inputBox").style.borderRadius  = "10px"
-        document.getElementById("invalidInput").style.display="flex"
-        document.getElementById("inputBox").placeholder = "Oops, Not Valid!!"
+        var inputBox = document.getElementById("inputBox");
+        var invalidInput = document.getElementById("invalidInput");
+
+        inputBox.placeholder = "Type something..."
+        invalidInput.style.display="flex"
 
         setTimeout(()=>{
-            document.getElementById("inputBox").style.border = "none"
-            document.getElementById("inputBox").style.borderRadius  = "none"
-            document.getElementById("inputBox").placeholder = "What's going on..."
-            document.getElementById("invalidInput").style.display="none"
+            inputBox.placeholder = "What's going on..."
+            invalidInput.style.display="none"
         },3000)
     }
 
@@ -267,8 +266,8 @@ function Form() {
                         {input.length != 0 && <CancelIcon className="clearIcon" onClick={clickedClear}/>}
                     </div>
                     <div id="invalidInput" className='invalidInputAlert'>
-                        <div>Drop Valid Msg or Upload a Pic..</div>
-                        <WarningRoundedIcon className="warningIcon"/>
+                        <div>Type or upload something..</div>
+                        <AnnouncementIcon className="warningIcon"/>
                     </div>
                     {input.length == 2000 && <div className='inputLimitExceedAlert'>Max 1000 Characters...</div>}
                     <input 
