@@ -160,7 +160,9 @@ function Post(props) {
   return (
     <div className='post'>
         <div className='postLeft'>
-            <img src='https://cdn-icons-png.flaticon.com/512/1051/1051127.png' 
+            <img 
+            src={props.displayPicture == null ?'https://cdn-icons-png.flaticon.com/512/1051/1051127.png' : props.displayPicture}
+            style={{borderRadius : props.displayPicture == null ? 'none' : '50%'}}
             className='profileIcon'/>
         </div>
 
