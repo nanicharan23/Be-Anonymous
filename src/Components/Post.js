@@ -189,7 +189,7 @@ function Post(props) {
 
             <div className='postFooter'>
               <div className='likeButton' onClick={()=>clickedLike()}>
-                {!filled ? <FavoriteBorderIcon  id="borderedLikeIcon" className='borderLikeIcon'/> : <FavoriteIcon  id="filledLikeIcon" className='filledLikeIcon'/>}
+                {props.likes == 0 ? <FavoriteBorderIcon  id="borderedLikeIcon" className='borderLikeIcon'/> : <FavoriteIcon  id="filledLikeIcon" className='filledLikeIcon'/>}
                 <div className='likeText'><b>{props.likes}</b> {props.likes==1?"Like":"Likes"}</div>
               </div>
               <div className='replyButton' onClick={() => setExpanded(!expanded)}>
