@@ -54,6 +54,7 @@ function Form() {
             db.collection('posts').add({
                 secondPosted : currentSecond,
                 name : auth.currentUser.displayName,
+                displayPicture : auth.currentUser.photoURL == null ? 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png' : auth.currentUser.photoURL,
                 content: input.length == 0 ? "" : (allEmojies(input) ? input : filter.clean(input)),
                 timestamp : formatedDate,
                 fileUrl : imageUrl,
@@ -253,7 +254,7 @@ function Form() {
             <div className='form'>
                 <div className='formLeft'>
                     <img src='https://cdn-icons-png.flaticon.com/512/1051/1051127.png' 
-                    className='profileIcon'/>
+                    className='profileIcon-form'/>
                 </div>
                 <div className='formRight'>
                     <div className='inputBoxWithClear'>

@@ -31,6 +31,7 @@ function Feed() {
             <Post 
             key={index} 
             name={post.name} 
+            displayPicture={post.displayPicture}
             content={post.content} 
             timestamp={post.timestamp} 
             fileUrl={post.fileUrl}

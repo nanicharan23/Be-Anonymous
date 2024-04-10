@@ -7,6 +7,7 @@ import VerifiedIconLogo from '../Images/VerifiedIcon.png'
 import { getAuth, updateProfile } from 'firebase/auth'
 import imageCompression from 'browser-image-compression'
 import {v4} from 'uuid'
+import LinearProgress from '@mui/material/LinearProgress';
 
 function Profile() {
     const [posts, setPosts] = useState([]) // This is used to set posts.
@@ -39,6 +40,9 @@ function Profile() {
         const image = e.target.files[0]
         
         if(image==null) return
+        
+        // Enables the Progress bar for updating display picture.
+        showingUpdatingDisplayPictureLoading(true)
 
         const compressionOptions = {
             maxSizeMB: 1,
@@ -52,21 +56,76 @@ function Profile() {
         const storageRef = firebaseApp.storage().ref()
         const fileRef = storageRef.child(`displayPictures/${compressedImageName}`)
         await fileRef.put(compressedImage)
+        
+        const displayPictureUrl = await fileRef.getDownloadURL()
 
         const auth = getAuth();
         updateProfile(auth.currentUser, {
-            photoURL : await fileRef.getDownloadURL()
+            photoURL : displayPictureUrl
         }).then(()=>{
             console.log("Display Picture Updated!!");
         }).catch((error)=>{
             console.log("Display Picture Update Failed!!"+error);
         })
+        
+        // Updates Display Picture for all the existing posts of the current user.
+        updatedisplayPictureForCurrentUserPosts(auth.currentUser.displayName,displayPictureUrl);
+
+        // Remove the Progress bar for update display picture.
+        showingUpdatingDisplayPictureLoading(false)
     }
-    
+
+    const updatedisplayPictureForCurrentUserPosts = async (username,displayPictureUrl) => {
+        db.collection('posts').where("name","==",username).get().then((snapshot)=>{
+            snapshot.forEach((doc)=>{
+                doc.ref.update({
+                    displayPicture : displayPictureUrl
+                })
+            })
+        })
+    }
+
+    const showingUpdatingDisplayPictureLoading = (state) =>{
+        if(state){
+            document.getElementById("updateDisplayPictureProgressBar").style.display="block"
+            document.getElementById("profile-profileIcon").style.filter="blur(5px)";
+        }else{
+            document.getElementById("updateDisplayPictureProgressBar").style.display="none"
+            document.getElementById("profile-profileIcon").style.filter="none";
+        }
+    }
+
+    const profileIconStyle = {
+        width : '200px',
+        height : '200px',
+        objectFit : 'cover',
+        borderRadius: '50%',
+        border: 'solid #ffffff',
+        borderWidth: '2px'
+    }
+
+    const defaultIconStyle = {
+        width : '200px',
+        height : '200px',
+    }
+
   return (
     <div className='profile container middle'>
         <div className='info'>
-            <img src={displayPicture == null ? 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png': displayPicture} className='profile-profileIcon'/>
+            <label for="profileDisplayPicture" className='profileDisplayPicture'>
+                <img 
+                src={displayPicture == null ? 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png': displayPicture} 
+                id='profile-profileIcon' 
+                className='profile-profileIcon'
+                style={displayPicture!=null ? profileIconStyle: defaultIconStyle}
+                />
+            </label>
+            <input 
+            id="profileDisplayPicture" 
+            type="file" 
+            style={{display : 'none'}} 
+            onChange={e => updateDisplayPicture(e)}
+            accept="image/png, image/jpeg, image/jpg"/>
             <div>
                 <div className='profileHeading'>Anonymous ID</div>
                 <div className='profileDetails'>{name} <img className="verifiedIcon" src={VerifiedIconLogo}/></div>
@@ -80,7 +139,7 @@ function Profile() {
                 <div className='profileDetails'>{postsCount}</div>
             </div>
         </div>
-
+        <LinearProgress id="updateDisplayPictureProgressBar" className="updateDisplayPictureProgressBar"/>
         <div className='feed'>
         {posts.length == 0 && 
             <div className='noPosts'>No Posts</div>

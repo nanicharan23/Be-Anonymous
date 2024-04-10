@@ -7,7 +7,7 @@ function About() {
   return (
     <div className='about container middle'>
         <div className='about-inner'>
-            <img src='https://cdn-icons-png.flaticon.com/512/1051/1051127.png' className='profile-profileIcon'/>
+            <img src='https://cdn-icons-png.flaticon.com/512/1051/1051127.png' className='about-profileIcon'/>
             <div className='description'>
                 <b>Be Anonymous</b> is a place where you doesn't need to hesitate to tell something. If you have something to express or confess anonymously, Be Anonymous is the right place to express.
             </div>

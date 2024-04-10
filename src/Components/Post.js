@@ -18,6 +18,8 @@ import en from 'javascript-time-ago/locale/en'
 import db, { auth, firebaseApp } from '../Firebase/Firebase';
 
 import VerifiedIconLogo from '../Images/VerifiedIcon.png'
+import Mask from '../Images/mask.png'
+import Anonymous from '../Images/anonymous.png'
 
 function Post(props) {
 
@@ -122,7 +124,6 @@ function Post(props) {
     const imageRef = firebaseApp.storage().refFromURL(props.fileUrl)
 
     await imageRef.delete() // Deleting current post image from firebase storage
-
   }
 
   /**
@@ -161,9 +162,9 @@ function Post(props) {
     <div className='post'>
         <div className='postLeft'>
             <img 
-            src={props.displayPicture == null ?'https://cdn-icons-png.flaticon.com/512/1051/1051127.png' : props.displayPicture}
-            style={{borderRadius : props.displayPicture == null ? 'none' : '50%'}}
-            className='profileIcon'/>
+            src={props.displayPicture == null ? Anonymous : props.displayPicture}
+            style={{borderRadius : props.displayPicture == null ? 'none' : '50%', overflow : 'hidden'}}
+            className='profileIcon-post'/>
         </div>
 
         <div className='postRight'>
