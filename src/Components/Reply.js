@@ -63,6 +63,7 @@ function Reply(props) {
             replies.push({
                 replyId : uuidv4(),
                 repliedUsername : auth.currentUser.displayName, 
+                displayPicture : auth.currentUser.photoURL,
                 reply : allEmojies(reply) ? reply : filter.clean(reply),
                 secondReplied : currentSecond
             })

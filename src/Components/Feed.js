@@ -12,7 +12,7 @@ function Feed() {
 
     // This will get invoked when ever Feed component runs and fetches the posts from database.
     useEffect(()=>{
-        db.collection('posts').orderBy('secondPosted','desc').onSnapshot(snapshot => {
+        db.collection('posts').limit(20).orderBy('secondPosted','desc').onSnapshot(snapshot => {
             var listOfPosts = snapshot.docs.map(doc => doc.data())
             setPosts(listOfPosts)
         })

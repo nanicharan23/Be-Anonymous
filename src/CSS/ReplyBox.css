@@ -34,3 +34,10 @@
     color: #ADB5BD;
     font-size: smaller;
 }
+
+.profileIcon-replyBox{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}

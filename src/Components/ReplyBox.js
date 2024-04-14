@@ -24,8 +24,8 @@ function ReplyBox(props) {
         <div className='replyBox'>
             <div className='replyBoxLeft'>
                 <img 
-                src='https://cdn-icons-png.flaticon.com/512/3393/3393852.png' 
-                className='profileIcon'/>
+                src={props.displayPicture == null ?'https://cdn-icons-png.flaticon.com/512/3393/3393852.png' : props.displayPicture}
+                className='profileIcon-replyBox'/>
             </div>
             <div className='replyBoxRight'>
                 <div className='replyBoxRight_1'>

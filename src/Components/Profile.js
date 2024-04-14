@@ -1,13 +1,15 @@
 import React,{useState, useEffect} from 'react'
 import '../CSS/Profile.css'
 import Post from '../Components/Post'
-import {firebaseApp} from '../Firebase/Firebase'   
+import {auth, firebaseApp} from '../Firebase/Firebase'   
 import db from '../Firebase/Firebase'
 import VerifiedIconLogo from '../Images/VerifiedIcon.png'
 import { getAuth, updateProfile } from 'firebase/auth'
 import imageCompression from 'browser-image-compression'
 import {v4} from 'uuid'
 import LinearProgress from '@mui/material/LinearProgress';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 function Profile() {
     const [posts, setPosts] = useState([]) // This is used to set posts.
@@ -16,6 +18,9 @@ function Profile() {
     const [email, setEmail] = useState("")
     const [displayPicture, setDisplayPicture] = useState("")
     const [postsCount, setPostsCount] = useState(0)
+    const [severity, setSeverity] = useState("success")
+    const [openSnackBar, setOpenSnackBar] = useState(false)
+    const [snackBarText, setSnackBarText] = useState("")
 
     firebaseApp.auth().onAuthStateChanged((user)=>{
         if(user!=null){
@@ -27,7 +32,7 @@ function Profile() {
 
     // This will get invoked when ever Feed component runs and fetches the posts from database.
     useEffect(()=>{
-        db.collection('posts').orderBy('secondPosted','desc').onSnapshot(snapshot => {
+        db.collection('posts').limit(10).orderBy('secondPosted','desc').onSnapshot(snapshot => {
             
             var listOfPosts = snapshot.docs.map(doc => doc.data()).filter(doc=> doc.name == name)
             setPostsCount(listOfPosts.length)
@@ -70,9 +75,23 @@ function Profile() {
         
         // Updates Display Picture for all the existing posts of the current user.
         updatedisplayPictureForCurrentUserPosts(auth.currentUser.displayName,displayPictureUrl);
+        updateDisplayPictureForCurrentUserReplies(auth.currentUser.displayName,displayPictureUrl);
 
-        // Remove the Progress bar for update display picture.
+        // Remove the Progess bar for update display picture.
         showingUpdatingDisplayPictureLoading(false)
+        snackBarContext("Display Pictured Updated!!","success")
+    }
+
+    /**
+     * This method is sets the snack bar context before displaying
+     * @name snackBarContext
+     * @param {} message
+     * @param {} messageType
+     */
+    const snackBarContext = (message, messageType) => {
+        setSnackBarText(message)
+        setSeverity(messageType)
+        setOpenSnackBar(true)
     }
 
     const updatedisplayPictureForCurrentUserPosts = async (username,displayPictureUrl) => {
@@ -81,6 +100,22 @@ function Profile() {
                 doc.ref.update({
                     displayPicture : displayPictureUrl
                 })
+            })
+        })
+    }
+
+    const updateDisplayPictureForCurrentUserReplies = async (user, displayPictureUrl) =>{
+        db.collection('posts').get().then((snapshot)=>{
+            snapshot.forEach((doc)=>{
+                var data = doc.data();
+                var replies = data.replies;
+
+                replies.forEach((reply)=>{
+                    if(reply.repliedUsername == user)
+                        reply.displayPicture = displayPictureUrl;
+                })
+
+                doc.ref.update({replies : replies});
             })
         })
     }
@@ -160,6 +195,11 @@ function Profile() {
             ></Post>
         ))}
     </div>
+    <Snackbar open={openSnackBar} autoHideDuration={3000} onClose={()=>setOpenSnackBar(false)}>
+          <MuiAlert severity={severity} sx={{ width: '100%' }} onClose={()=>setOpenSnackBar(false)}>
+            {snackBarText}
+          </MuiAlert>
+      </Snackbar>
     </div>
   )
 }

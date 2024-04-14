@@ -10,6 +10,7 @@ function Replies(props) {
         <div key={uuidv4()+reply.reply}>
             <ReplyBox 
             repliedUsername={reply.repliedUsername}
+            displayPicture={reply.displayPicture}
             reply={reply.reply}
             repliedSecond={reply.secondReplied}
             />
