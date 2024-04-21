@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import $ from 'jquery' 
 import '../CSS/Form.css'
 
@@ -34,6 +34,15 @@ function Form() {
 
     const [input, setInput] = useState("") // Sets the input when ever input field is changed.
     const [imageUrl, setImageUrl] = useState(null) // Sets the file url when file is uploaded
+    const [displayPicture, setDisplayPicture] = useState(null)
+
+    useEffect(()=>{
+        firebaseApp.auth().onAuthStateChanged((user)=>{
+            if(user!=null){
+                setDisplayPicture(user.photoURL)
+            }
+        })
+    },[])
 
     /**
      * This method is used to add new post to database(Cloud Firestore).
@@ -253,7 +262,7 @@ function Form() {
         <div>
             <div className='form'>
                 <div className='formLeft'>
-                    <img src={auth.currentUser.photoURL!=null ? auth.currentUser.photoURL : 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png' }
+                    <img src={displayPicture!=null ? displayPicture : 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png' }
                     className='profileIcon-form'/>
                 </div>
                 <div className='formRight'>

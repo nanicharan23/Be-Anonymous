@@ -38,7 +38,7 @@ function Profile() {
             setPostsCount(listOfPosts.length)
             setPosts(listOfPosts)
         })
-    },[posts,postsCount,email, name])
+    },[posts,postsCount,email, name,displayPicture])
 
 
     const updateDisplayPicture = async (e) => {
@@ -65,7 +65,7 @@ function Profile() {
         const displayPictureUrl = await fileRef.getDownloadURL()
 
         const auth = getAuth();
-        updateProfile(auth.currentUser, {
+        await updateProfile(auth.currentUser, {
             photoURL : displayPictureUrl
         }).then(()=>{
             console.log("Display Picture Updated!!");
@@ -74,8 +74,10 @@ function Profile() {
         })
         
         // Updates Display Picture for all the existing posts of the current user.
-        updatedisplayPictureForCurrentUserPosts(auth.currentUser.displayName,displayPictureUrl);
-        updateDisplayPictureForCurrentUserReplies(auth.currentUser.displayName,displayPictureUrl);
+        await updatedisplayPictureForCurrentUserPosts(auth.currentUser.displayName,displayPictureUrl);
+        await updateDisplayPictureForCurrentUserReplies(auth.currentUser.displayName,displayPictureUrl);
+
+        // setDisplayPicture(displayPictureUrl);
 
         // Remove the Progess bar for update display picture.
         showingUpdatingDisplayPictureLoading(false)
@@ -147,7 +149,7 @@ function Profile() {
   return (
     <div className='profile container middle'>
         <div className='info'>
-            <label for="profileDisplayPicture" className='profileDisplayPicture'>
+            <label htmlFor="profileDisplayPicture" className='profileDisplayPicture'>
                 <img 
                 src={displayPicture == null ? 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png': displayPicture} 
                 id='profile-profileIcon' 
