@@ -10,6 +10,7 @@ import {v4} from 'uuid'
 import LinearProgress from '@mui/material/LinearProgress';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import Anonymous from '../Images/anonymous.png'
 
 function Profile() {
     const [posts, setPosts] = useState([]) // This is used to set posts.
@@ -151,7 +152,7 @@ function Profile() {
         <div className='info'>
             <label htmlFor="profileDisplayPicture" className='profileDisplayPicture'>
                 <img 
-                src={displayPicture == null ? 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png': displayPicture} 
+                src={displayPicture == null ? Anonymous : displayPicture} 
                 id='profile-profileIcon' 
                 className='profile-profileIcon'
                 style={displayPicture!=null ? profileIconStyle: defaultIconStyle}

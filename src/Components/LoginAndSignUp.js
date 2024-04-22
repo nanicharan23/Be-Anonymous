@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import '../CSS/LoginAndSignUp.css'
-
+import Anonymous from '../Images/anonymous.png'
 import {auth} from '../Firebase/Firebase'
 
 import $ from 'jquery'

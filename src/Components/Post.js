@@ -18,7 +18,6 @@ import en from 'javascript-time-ago/locale/en'
 import db, { auth, firebaseApp } from '../Firebase/Firebase';
 
 import VerifiedIconLogo from '../Images/VerifiedIcon.png'
-import Mask from '../Images/mask.png'
 import Anonymous from '../Images/anonymous.png'
 
 function Post(props) {

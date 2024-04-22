@@ -17,7 +17,7 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import LinearProgress from '@mui/material/LinearProgress';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import CancelIcon from '@mui/icons-material/Cancel';
-
+import Anonymous from '../Images/anonymous.png'
 import CorkSound from '../Audio/CorkSound.mp3'
 
 function Form() {
@@ -63,7 +63,7 @@ function Form() {
             db.collection('posts').add({
                 secondPosted : currentSecond,
                 name : auth.currentUser.displayName,
-                displayPicture : auth.currentUser.photoURL == null ? 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png' : auth.currentUser.photoURL,
+                displayPicture : auth.currentUser.photoURL,
                 content: input.length == 0 ? "" : (allEmojies(input) ? input : filter.clean(input)),
                 timestamp : formatedDate,
                 fileUrl : imageUrl,
@@ -262,7 +262,7 @@ function Form() {
         <div>
             <div className='form'>
                 <div className='formLeft'>
-                    <img src={displayPicture!=null ? displayPicture : 'https://cdn-icons-png.flaticon.com/512/1051/1051127.png' }
+                    <img src={displayPicture!=null ? displayPicture : Anonymous }
                     className='profileIcon-form'/>
                 </div>
                 <div className='formRight'>
