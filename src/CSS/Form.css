@@ -12,7 +12,8 @@
     font-size: 20px;
     color: #F8F9FA;
     width: 100%;
-    font-weight: 200;
+    font-weight: 200; 
+    outline: none;
 }
 
 .invalidInputAlert{

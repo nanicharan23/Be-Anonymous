@@ -183,7 +183,7 @@ function Post(props) {
               </div>
             </div>
             <Linkify>
-              <div>{props.content}</div>
+              <div style={{whiteSpace :'pre-line'}}>{props.content}</div>
             </Linkify>
             {props.fileUrl!=null && <img className="postImage" src={props.fileUrl}></img>}
 

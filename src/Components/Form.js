@@ -59,12 +59,14 @@ function Form() {
 
         e.preventDefault()
 
+        const formattedInput = input.replace(/\r\n|\r|\n/g,"\n");
+
         try{
             db.collection('posts').add({
                 secondPosted : currentSecond,
                 name : auth.currentUser.displayName,
                 displayPicture : auth.currentUser.photoURL,
-                content: input.length == 0 ? "" : (allEmojies(input) ? input : filter.clean(input)),
+                content: formattedInput.length == 0 ? "" : (allEmojies(formattedInput) ? input : filter.clean(formattedInput)),
                 timestamp : formatedDate,
                 fileUrl : imageUrl,
                 replies : [],
@@ -267,7 +269,7 @@ function Form() {
                 </div>
                 <div className='formRight'>
                     <div className='inputBoxWithClear'>
-                        <input 
+                        <textarea 
                         id="inputBox"
                         type="text" 
                         className="inputBox"
@@ -275,7 +277,7 @@ function Form() {
                         value={input}
                         onChange={e=>setInput(e.target.value)}
                         maxLength="2000"
-                        ></input>
+                        ></textarea>
                         {input.length != 0 && <CancelIcon className="clearIcon" onClick={clickedClear}/>}
                     </div>
                     <div id="invalidInput" className='invalidInputAlert'>
